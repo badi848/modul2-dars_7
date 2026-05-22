@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Trafalgar – Virtual Healthcare</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2563CF;--blue2:#4a8fe8;--blue-light:#EBF3FF;
+  --text:#1a2e4a;--muted:#7a8fa6;--bg:#f7f9fc;--white:#fff;
+  --radius:16px;--shadow:0 4px 24px rgba(37,99,207,.10);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+ 
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 80px;height:68px;background:var(--white);border-bottom:1px solid #e8eef6;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue);text-decoration:none}
+.logo-box{width:30px;height:30px;background:var(--blue);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.88rem;font-weight:600;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:10px 26px;border-radius:30px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.86rem;cursor:pointer;transition:background .2s,transform .15s}
+.nav-cta:hover{background:#1a4fba;transform:scale(1.03)}
+ 
+/* HERO */
+.hero{background:linear-gradient(120deg,#eaf2ff 0%,#f2f7ff 100%);padding:70px 80px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px;overflow:hidden;position:relative}
+.hero-text{max-width:460px;z-index:1}
+.hero-text h1{font-family:'Poppins',sans-serif;font-size:2.55rem;font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero-text h1 span{color:var(--blue)}
+.hero-text p{color:var(--muted);font-size:.93rem;margin-bottom:28px;max-width:380px}
+.btn-primary{background:var(--blue);color:#fff;border:none;padding:13px 34px;border-radius:30px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;box-shadow:0 6px 22px rgba(37,99,207,.32);transition:background .2s,transform .18s,box-shadow .2s}
+.btn-primary:hover{background:#1a4fba;transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,99,207,.4)}
+.hero-art{flex-shrink:0;width:370px;height:260px;background:linear-gradient(135deg,#c8defa 0%,#deeeff 100%);border-radius:22px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+ 
+/* SECTION BASE */
+.section{padding:70px 80px}
+.section-title{font-family:'Poppins',sans-serif;font-size:1.7rem;font-weight:700;text-align:center;margin-bottom:10px}
+.section-sub{text-align:center;color:var(--muted);font-size:.88rem;max-width:580px;margin:0 auto 42px;line-height:1.8}
+ 
+/* SERVICES */
+.services{background:var(--bg)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+ 
+/* CARD */
+.card{background:var(--white);border-radius:var(--radius);padding:28px 22px 24px;box-shadow:var(--shadow);border:1.5px solid transparent;transition:transform .3s,box-shadow .3s,border-color .3s,background .3s;cursor:default}
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#2563CF;
+  background:linear-gradient(145deg,#2563CF 0%,#4a8fe8 100%);
+  box-shadow:
+    0 0 0 2px #2563CF,
+    0 12px 40px rgba(37,99,207,.5),
+    0 0 60px rgba(37,99,207,.25);
+}
+.card:hover .cicon{
+  background:rgba(255,255,255,.22);
+  box-shadow:0 0 22px rgba(255,255,255,.35);
+  transform:scale(1.12);
+}
+.card:hover .ctitle{color:#fff;}
+.card:hover .ctext{color:rgba(255,255,255,.85);}
+.card:hover .cicon svg{stroke:#fff !important;}
+ 
+ 
+ 
+ 
+ 
+ 
+.cicon{width:50px;height:50px;border-radius:13px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:background .3s,box-shadow .3s,transform .3s}
+.cicon svg{width:24px;height:24px}
+.ctitle{font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:600;margin-bottom:7px;color:var(--text)}
+.ctext{font-size:.82rem;color:var(--muted);line-height:1.65}
+.center{text-align:center;margin-top:38px}
+.btn-outline{display:inline-block;padding:11px 42px;border-radius:30px;border:1.8px solid var(--blue);background:transparent;color:var(--blue);font-family:'Poppins',sans-serif;font-weight:600;font-size:.88rem;cursor:pointer;transition:background .22s,color .22s,transform .18s;text-decoration:none}
+.btn-outline:hover{background:var(--blue);color:#fff;transform:scale(1.04)}
+ 
+/* MORE INFO */
+.moreinfo{display:flex;align-items:center;gap:60px}
+.info-art{flex-shrink:0;width:370px;height:260px;background:linear-gradient(135deg,#deeeff 0%,#c8defa 100%);border-radius:22px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.info-text h2{font-family:'Poppins',sans-serif;font-size:1.55rem;font-weight:700;margin-bottom:14px;line-height:1.35}
+.info-text p{color:var(--muted);font-size:.88rem;margin-bottom:26px;line-height:1.8}
+ 
+/* ARTICLES */
+.articles-box{border:1.5px solid #d0e2f7;border-radius:20px;padding:38px}
+.articles-box h3{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:700;text-align:center;margin-bottom:26px}
+.art-card{border-radius:12px;overflow:hidden;border:1px solid #e5eef8;background:var(--white);transition:transform .25s,box-shadow .25s}
+.art-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(37,99,207,.13)}
+.art-img{height:150px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.art-body{padding:14px}
+.art-body h4{font-family:'Poppins',sans-serif;font-size:.87rem;font-weight:600;margin-bottom:7px;line-height:1.4}
+.art-body p{font-size:.76rem;color:var(--muted);line-height:1.6;margin-bottom:10px}
+.readmore{font-size:.78rem;color:var(--blue);font-weight:600;text-decoration:none}
+.readmore:hover{text-decoration:underline}
+ 
+/* FOOTER */
+footer{background:linear-gradient(135deg,#2563CF 0%,#1a4fba 100%);color:#fff;padding:52px 80px 32px}
+.footer-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.f-logo{display:flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;margin-bottom:12px}
+.f-logo-box{width:26px;height:26px;background:rgba(255,255,255,.22);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.f-desc{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.75;max-width:210px}
+.f-col h5{font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:600;margin-bottom:14px}
+.f-col ul{list-style:none}
+.f-col ul li{margin-bottom:9px}
+.f-col ul li a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;transition:color .2s}
+.f-col ul li a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.16);padding-top:20px;text-align:center;font-size:.8rem;color:rgba(255,255,255,.5)}
+ 
+/* ANIMS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.card{animation:fadeUp .5s ease both}
+.card:nth-child(1){animation-delay:.04s}.card:nth-child(2){animation-delay:.11s}.card:nth-child(3){animation-delay:.18s}
+.card:nth-child(4){animation-delay:.25s}.card:nth-child(5){animation-delay:.32s}.card:nth-child(6){animation-delay:.39s}
+ 
+@media(max-width:900px){
+  nav,.hero,.section,footer{padding-left:20px;padding-right:20px}
+  .hero{flex-direction:column;padding:50px 20px}
+  .hero-art,.info-art{width:100%;max-width:400px}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .moreinfo{flex-direction:column}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:540px){
+  .grid3{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+ 
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-box">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </div>
+    Trafalgar
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#services">Find a Doctor</a></li>
+    <li><a href="#">Apps</a></li>
+    <li><a href="#">Testimonials</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <button class="nav-cta">Consult today</button>
+</nav>
+ 
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-text">
+    <h1>Virtual <span>healthcare</span><br>for you</h1>
+    <p>Trafalgar provides progressive, and affordable healthcare, accessible on mobile and online for everyone. To us, it's not just work. We take pride in the solutions we deliver.</p>
+    <button class="btn-primary">Consult today</button>
+  </div>
+  <div class="hero-art">
+    <!-- SVG illustration: doctor + phone + health icons -->
+    <svg width="340" height="240" viewBox="0 0 340 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- phone frame -->
+      <rect x="30" y="28" width="108" height="172" rx="16" fill="white" opacity=".92"/>
+      <rect x="42" y="46" width="84" height="10" rx="5" fill="#b8d4f4"/>
+      <rect x="42" y="64" width="60" height="7" rx="3.5" fill="#cde0f7"/>
+      <rect x="42" y="78" width="72" height="7" rx="3.5" fill="#cde0f7"/>
+      <!-- heartbeat line -->
+      <polyline points="42,148 58,148 65,128 75,168 83,136 91,148 108,148" stroke="#2563CF" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- doctor body -->
+      <circle cx="232" cy="72" r="30" fill="#a8c8ef"/>
+      <ellipse cx="232" cy="130" rx="26" ry="38" fill="#2563CF"/>
+      <!-- white coat detail -->
+      <rect x="222" y="102" width="20" height="36" rx="4" fill="white" opacity=".25"/>
+      <path d="M232 106 v20" stroke="#2563CF" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+      <!-- stethoscope -->
+      <path d="M218 122 Q210 135 214 148 Q218 158 228 158" stroke="#1a3a70" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="228" cy="160" r="5" fill="#1a3a70"/>
+      <!-- shield badge -->
+      <path d="M270 85 L292 95 L292 118 Q292 134 281 140 Q270 134 270 118 Z" fill="#a8c8ef" opacity=".8"/>
+      <path d="M278 112 l4 4 6-8" stroke="#2563CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- heart -->
+      <path d="M160 52 C160 45 167 41 171 46 C175 41 182 45 182 52 C182 61 171 70 171 70 C171 70 160 61 160 52Z" fill="#f87171" opacity=".85"/>
+      <!-- floating pills -->
+      <rect x="292" y="150" width="28" height="14" rx="7" fill="#a8c8ef" opacity=".7" transform="rotate(-25 292 150)"/>
+      <line x1="306" y1="142" x2="306" y2="156" stroke="#2563CF" stroke-width="1.5" opacity=".8" transform="rotate(-25 306 149)"/>
+      <!-- small dots -->
+      <circle cx="20" cy="90" r="5" fill="#2563CF" opacity=".18"/>
+      <circle cx="14" cy="120" r="3.5" fill="#2563CF" opacity=".12"/>
+      <circle cx="325" cy="65" r="4" fill="#2563CF" opacity=".2"/>
+      <circle cx="318" cy="190" r="3" fill="#2563CF" opacity=".15"/>
+    </svg>
+  </div>
+</div>
+ 
+<!-- ── SERVICES ── -->
+<section class="section services" id="services">
+  <p class="section-title">Our services</p>
+  <p class="section-sub">We provide to you the best choices for you. Adjust it to your health needs and make sure you undergo treatment with our highly qualified doctors. You can consult with us which type of service is suitable for your health.</p>
+  <div class="grid3">
+ 
+    <div class="card">
+      <div class="cicon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/>
+        </svg>
+      </div>
+      <p class="ctitle">Search doctor</p>
+      <p class="ctext">Choose your doctor from thousands of specialists, general and trusted hospitals.</p>
+    </div>
+ 
+    <div class="card">
+      <div class="cicon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
+          <path d="M8.5 8.5 16 16"/>
+        </svg>
+      </div>
+      <p class="ctitle">Online pharmacy</p>
+      <p class="ctext">Buy your medicines with our mobile application with a simple delivery system.</p>
+    </div>
+ 
+    <div class="card">
+      <div class="cicon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="8" height="4" x="8" y="2" rx="1"/>
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+          <path d="M9 14l2 2 4-4"/>
+        </svg>
+      </div>
+      <p class="ctitle">Consultation</p>
+      <p class="ctext">Free consultation with our trusted doctors and get the best recommendations.</p>
+    </div>
+ 
+    <div class="card">
+      <div class="cicon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+        </svg>
+      </div>
+      <p class="ctitle">Details info</p>
+      <p class="ctext">Free consultation with our trusted doctors and get the best recommendations.</p>
+    </div>
+ 
+    <div class="card">
+      <div class="cicon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+          <path d="M12 8v8M8 12h8"/>
+        </svg>
+      </div>
+      <p class="ctitle">Emergency care</p>
+      <p class="ctext">You can get 24/7 urgent care for yourself or your children and your lovely family.</p>
+    </div>
+ 
+    <div class="card">
+      <div class="cicon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <p class="ctitle">Tracking</p>
+      <p class="ctext">Track and save your medical history and health data.</p>
+    </div>
+ 
+  </div>
+  <div class="center"><a href="#" class="btn-outline">Learn more</a></div>
+</section>
+ 
+<!-- ── MORE INFO ── -->
+<section class="section">
+  <p class="section-title">More Info</p>
+  <div class="moreinfo" style="margin-top:40px">
+    <div class="info-art">
+      <svg width="340" height="240" viewBox="0 0 340 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- large tablet/screen -->
+        <rect x="28" y="30" width="150" height="172" rx="16" fill="white" opacity=".88"/>
+        <rect x="42" y="50" width="110" height="12" rx="6" fill="#b8d4f4"/>
+        <rect x="42" y="70" width="80" height="8" rx="4" fill="#cde0f7"/>
+        <rect x="42" y="86" width="95" height="8" rx="4" fill="#cde0f7"/>
+        <rect x="42" y="102" width="70" height="8" rx="4" fill="#cde0f7"/>
+        <!-- chart bars -->
+        <rect x="42" y="148" width="16" height="32" rx="4" fill="#2563CF" opacity=".35"/>
+        <rect x="64" y="138" width="16" height="42" rx="4" fill="#2563CF" opacity=".55"/>
+        <rect x="86" y="128" width="16" height="52" rx="4" fill="#2563CF" opacity=".75"/>
+        <rect x="108" y="118" width="16" height="62" rx="4" fill="#2563CF"/>
+        <rect x="130" y="132" width="16" height="48" rx="4" fill="#2563CF" opacity=".6"/>
+        <!-- doctor 2 -->
+        <circle cx="252" cy="80" r="28" fill="#a8c8ef"/>
+        <ellipse cx="252" cy="135" rx="24" ry="36" fill="#2563CF"/>
+        <rect x="243" y="108" width="18" height="30" rx="4" fill="white" opacity=".22"/>
+        <!-- syringe -->
+        <rect x="284" y="148" width="40" height="10" rx="5" fill="#7ab2e8" transform="rotate(-40 284 148)"/>
+        <path d="M282 145 l-6 8" stroke="#4a78b8" stroke-width="2" stroke-linecap="round"/>
+        <path d="M310 120 l-6 8" stroke="#4a78b8" stroke-width="2" stroke-linecap="round"/>
+        <!-- health cross -->
+        <rect x="300" y="62" width="28" height="28" rx="6" fill="#deeeff"/>
+        <path d="M314 68v16M307 76h14" stroke="#2563CF" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- dots -->
+        <circle cx="18" cy="80" r="5" fill="#2563CF" opacity=".15"/>
+        <circle cx="326" cy="190" r="4" fill="#2563CF" opacity=".15"/>
+      </svg>
+    </div>
+    <div class="info-text">
+      <h2>Leading healthcare<br>providers</h2>
+      <p>Trafalgar provides progressive, and affordable healthcare, accessible on mobile and online for everyone. To us, it's not just work. We take pride in the solutions we deliver.</p>
+      <a href="#" class="btn-outline">Learn more</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── ARTICLES ── -->
+<section class="section" style="padding-top:0">
+  <div class="articles-box">
+    <h3>Check out our latest article</h3>
+    <div class="grid3">
+ 
+      <div class="art-card">
+        <div class="art-img" style="background:linear-gradient(135deg,#c8defa,#e8f4ff)">
+          <svg width="140" height="110" viewBox="0 0 140 110" fill="none">
+            <rect x="20" y="20" width="100" height="70" rx="10" fill="white" opacity=".5"/>
+            <circle cx="50" cy="45" r="14" fill="#a8c8ef"/>
+            <rect x="36" y="62" width="68" height="7" rx="3.5" fill="#b8d4f4"/>
+            <rect x="42" y="76" width="56" height="6" rx="3" fill="#cde0f7"/>
+            <path d="M80 35 l6 6 10-12" stroke="#2563CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="art-body">
+          <h4>Disease detection, check up in the laboratory</h4>
+          <p>In this case the role of the health laboratory is very important to do a disease detection.</p>
+          <a href="#" class="readmore">Read more →</a>
+        </div>
+      </div>
+ 
+      <div class="art-card">
+        <div class="art-img" style="background:linear-gradient(135deg,#b8d4f4,#deeeff)">
+          <svg width="140" height="110" viewBox="0 0 140 110" fill="none">
+            <rect x="15" y="15" width="110" height="80" rx="12" fill="white" opacity=".5"/>
+            <path d="M40 70 Q55 40 70 55 Q85 70 100 35" stroke="#2563CF" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="70" cy="35" r="10" fill="#a8c8ef"/>
+            <path d="M65 35 l3 3 6-6" stroke="#2563CF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="art-body">
+          <h4>Herbal medicines that are safe for consumption</h4>
+          <p>In this case it's very important at this time because of its very good for your health.</p>
+          <a href="#" class="readmore">Read more →</a>
+        </div>
+      </div>
+ 
+      <div class="art-card">
+        <div class="art-img" style="background:linear-gradient(135deg,#d4e8fa,#eaf4ff)">
+          <svg width="140" height="110" viewBox="0 0 140 110" fill="none">
+            <ellipse cx="70" cy="55" rx="48" ry="38" fill="white" opacity=".5"/>
+            <circle cx="70" cy="45" r="18" fill="#a8c8ef"/>
+            <circle cx="70" cy="45" r="10" fill="#7ab2e8"/>
+            <rect x="52" y="72" width="36" height="7" rx="3.5" fill="#b8d4f4"/>
+            <path d="M56 55 Q70 68 84 55" stroke="#2563CF" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="art-body">
+          <h4>Natural care for healthy facial skin</h4>
+          <p>In this case the role of the health laboratory is very important to do a disease detection.</p>
+          <a href="#" class="readmore">Read more →</a>
+        </div>
+      </div>
+ 
+    </div>
+    <div style="text-align:center;margin-top:26px">
+      <a href="#" class="btn-outline">View all</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-logo">
+        <div class="f-logo-box">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#2563CF" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        Trafalgar
+      </div>
+      <p class="f-desc">Trafalgar provides progressive, and affordable healthcare, accessible on mobile and online for everyone.</p>
+    </div>
+    <div class="f-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Region</h5>
+      <ul>
+        <li><a href="#">Indonesia</a></li>
+        <li><a href="#">Singapore</a></li>
+        <li><a href="#">Malaysia</a></li>
+        <li><a href="#">Philippines</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Help</h5>
+      <ul>
+        <li><a href="#">Help center</a></li>
+        <li><a href="#">Contact support</a></li>
+        <li><a href="#">Instructions</a></li>
+        <li><a href="#">How it works</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2024 Trafalgar. All rights reserved.</div>
+</footer>
+ 
+</body>
+</html>
